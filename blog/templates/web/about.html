@@ -1,0 +1,49 @@
+{% extends 'web/base_main.html' %}
+
+
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" src="/static/web/js/hc-sticky.js"></script>
+{% endblock %}
+
+{% block article %}
+<article>
+  <aside class="l_box">
+    <div class="about_me">
+      <h2>关于我</h2>
+      <ul>
+        <i><img src="/static/web/images/m1.jpg"></i>
+        <p><b>二扬</b>，学习Python</p>
+      </ul>
+    </div>
+
+    <div class="guanzhu">
+      <h2>关注我 么么哒</h2>
+      <ul>
+        <img src="/static/web/images/weix.jpg">
+      </ul>
+    </div>
+  </aside>
+  <main class="r_box">
+     <div class="about">
+         <hr>
+    <img src="/static/web/images/m1.jpg">
+         <hr>
+    <img src="/static/web/images/m2.jpg">
+         <hr>
+
+          <h2>About my blog</h2>
+          &nbsp;
+          <p>域 名：www.yangqq.com 创建于2011年01月12日&nbsp;</p>
+          <br />
+          <p>服务器：阿里云服务器&nbsp;&nbsp;<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=8smrzoqa&amp;productCode=vm" target="_blank"><span style="color:#FF0000;"><strong>前往阿里云官网购买&gt;&gt;</strong></span></a></p>
+          <br />
+          <p>备案号：蜀ICP备11002373号-1</p>
+          <br />
+          <p>程 序：PHP 帝国CMS7.5</p>
+  
+     </div>
+  </main>
+</article>
+{% endblock %}
+

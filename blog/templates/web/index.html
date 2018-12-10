@@ -1,0 +1,48 @@
+{% extends 'web/base_main.html' %}
+
+
+{% block article %}
+<article>
+  <aside class="l_box">
+      <div class="about_me">
+        <h2>关于我</h2>
+        <ul>
+          <i><img src="/static/web/images/m1.jpg"></i>
+          <p><b>二扬</b>，96年出生，热衷于健身、编程</p>
+        </ul>
+      </div>
+
+      <div class="tuijian">
+        <h2>站长推荐</h2>
+        <ul>
+          <li><a href="">待补充</a></li>
+          <li><a href="">待补充</a></li>
+          <li><a href="">待补充</a></li>
+        </ul>
+      </div>
+      <div class="links">
+        <h2>友情链接</h2>
+        <ul>
+          <a href="">二扬个人博客</a> <a href="">二扬博客</a>
+        </ul>
+      </div>
+      <div class="guanzhu">
+        <h2>关注我 么么哒</h2>
+        <ul>
+          <img src="/static/web/images/weix.jpg">
+        </ul>
+      </div>
+  </aside>
+  <main class="r_box">
+      {% for art in articles %}
+    <li><i><a href="/"><img src="/media/{{ art.icon }}" alt=""></a></i>
+      <h3><a href="{% url 'web:info'  art.id %}">{{ art.title }}</a></h3>
+      <p>{{ art.describe }}</p>
+    </li>
+      {% endfor %}
+  </main>
+</article>
+{% endblock %}
+
+
+

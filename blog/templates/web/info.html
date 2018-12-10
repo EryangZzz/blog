@@ -1,0 +1,60 @@
+{% extends 'web/base_main.html' %}
+
+
+{% block css %}
+{{ block.super }}
+<link href="/static/web/css/info.css" rel="stylesheet">
+{% endblock %}
+
+{% block article %}
+<article>
+  <aside class="l_box">
+    <div class="fenlei">
+      <h2>文章分类</h2>
+      <ul>
+          {% for type in art_type %}
+        <li><a href="{% url 'web:show_type' type.id %}">{{ type.t_name }}</a></li>
+          {% endfor %}
+      </ul>
+    </div>
+
+
+    <div class="guanzhu">
+      <h2>关注我 么么哒</h2>
+      <ul>
+        <img src="/static/web/images/weix.jpg">
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <div class="infosbox">
+      <div class="newsview">
+        <h3 class="news_title">{{ article.title }}</h3>
+        <div class="bloginfo">
+          <ul>
+            <li class="author">作者：<a href="/">{{ article.author.username | upper }}</a></li>
+            <li class="lmname"><a href="/">{{ article.type.t_name}}</a></li>
+            <li class="timer">时间：2018-5-13</li>
+            <li class="view">4567人已阅读</li>
+          </ul>
+        </div>
+        <div class="tags"><a href="/" target="_blank">个人博客</a> &nbsp; <a href="/" target="_blank">小世界</a></div>
+        <div class="news_about"><strong>简介</strong>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</div>
+        <div class="news_con">
+            {{ article.content | safe }}
+        </div>
+      </div>
+      <div class="share">
+        <p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 很赞哦！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&id=20&down=5"></script>13</b>)</p>
+      </div>
+
+      <div class="nextinfo">
+
+        <a href="{% url 'web:list' %}" style="float: right; margin-right: 30px"><p>返回文章列表</p></a>
+      </div>
+
+    </div>
+  </main>
+</article>
+{% endblock %}
+

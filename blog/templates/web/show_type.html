@@ -1,0 +1,66 @@
+{% extends 'web/base_main.html '%}
+
+
+{% block js %}
+{{ block.super }}
+<script type="text/javascript" src="/static/web/js/hc-sticky.js"></script>
+{% endblock %}
+
+{% block article %}
+<article>
+  <aside class="l_box">
+    <div class="fenlei">
+      <h2>文章分类</h2>
+      <ul>
+          {% for type in art_type %}
+        <li><a href="{% url 'web:show_type' type.id %}">{{ type.t_name }}</a></li>
+          {% endfor %}
+
+      </ul>
+    </div>
+
+<div class="cloud">
+      <h2>标签云</h2>
+      <ul>
+          {% for article in articles %}
+        <a href="{% url 'web:info' article.id %}">{{ article.tags }}</a>
+          {% endfor %}
+      </ul>
+    </div>
+    <div class="guanzhu">
+      <h2>关注我 么么哒</h2>
+      <ul>
+        <img src="/static/web/images/weix.jpg">
+      </ul>
+    </div>
+  </aside>
+  <main class="r_box">
+
+        {% for art in page %}
+        <li><i><a href=""><img src="/media/{{ art.icon }}" alt=""></a></i>
+        <h3><a href="{% url 'web:info' art.id %}">{{ art.title }}</a></h3>
+        <p>{{ art.describe }}</p>
+        </li>
+        {% endfor %}
+
+      <p style="position: left; margin-left: 180px">
+          {% if page.has_previous %}
+          <a href="{% url 'web:list' %}?page={{ page.previous_page_number }}">上一页</a>
+          {% endif %}
+          &emsp;
+          {% for i in page.paginator.page_range %}
+          <a href="{% url 'web:list' %}?page={{ i }}">{{ i }}</a>&emsp;
+          {% endfor %}
+
+          {% if page.has_next %}
+          <a href="{% url 'web:list' %}?page={{ page.next_page_number }}">下一页</a>
+          {% endif %}
+            &emsp;
+          <a href="">当前第{{ page.number }}页</a>
+          &emsp;
+          <a href="">共有{{ page.paginator.num_pages }}页</a>
+      </p>
+  </main>
+</article>
+{% endblock %}
+

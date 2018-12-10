@@ -1,0 +1,31 @@
+{% extends 'backweb/base_main.html '%}
+
+
+{% block title %}
+    登录
+{% endblock %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="/static/backweb/css/login.css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="siteIcon"><img src="/static/backweb/images/icon/icon.png" alt="" data-toggle="tooltip" data-placement="top" title="欢迎使用二扬博客管理系统" draggable="false" /></div>
+  <form action="" method="post" autocomplete="off" class="form-signin">
+      <!--表单提交中都要定义csrf_token-->
+      {% csrf_token %}
+    <h2 class="form-signin-heading">账号注册</h2>
+      {{ errors }}
+    <input type="text" id="userName" name="username" class="form-control" placeholder="请输入用户名" required autofocus autocomplete="off">
+    <input type="password" id="password" name="password" class="form-control" placeholder="请输入密码" required autocomplete="off">
+    <input type="password" id="password2" name="password2" class="form-control" placeholder="请确定密码" required autocomplete="off">
+      <a href=""><button class="btn btn-lg btn-primary btn-block" type="submit" id="signinSubmit">注册</button></a>
+  </form>
+</div>
+{% endblock %}
+
+{% block endjs%}
+<script src="/static/backweb/js/bootstrap.min.js"></script>
+{% endblock %}
